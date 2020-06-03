@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,10 +15,10 @@ public class BattleShip {
 				+ "ships are located. If you sink the computers ship by guessing\n"
 				+ "the correct coordinates or if the computer sinks one of its own\n"
 				+ "ships, you will get a hit. And it will be displayed as \"!\".\n"
-				+ "If the computer sunk you ship or you sunk your own, it will be\n"
+				+ "If the computer sinks your ship or you sink your own, it will be\n"
 				+ "displayed as \"x\". Finally, when you miss, you will see \"-\" symbol");
 
-		System.out.println("\n******   GOOD LUCK   *******\n");
+		System.out.println("\n********  GOOD LUCK   *******\n");
 		System.out.println("******* HERE IS YOU MAP  ******** \n");
 		int[][] oceanMap = new int[10][10];
 		deploy(oceanMap);
@@ -104,10 +105,11 @@ public class BattleShip {
 		}
 	}
 
-	public static void computerDeployShip(int[][] grid) {
+	public static void computerDeployShip(int[][] grid)  {
 		Random rand = new Random();
 		int x, y;
-		System.out.println("\nComputer is deploying sheep");
+		System.out.println("\nComputer is deploying sheep.........");
+		try { Thread.sleep(1000); }catch (InterruptedException e){ System.out.println("Sleep interrupted"); }
 		for (int i = 0; i < 5; i++) {
 			x = rand.nextInt(10);
 			y = rand.nextInt(10);
@@ -118,7 +120,7 @@ public class BattleShip {
 			}
 			grid[x][y] = 2; // code for computer ship
 			System.out.println("Ship " + (i + 1) + " is Deployed");
-
+			try { Thread.sleep(2000); }catch (InterruptedException e){ System.out.println("Sleep interrupted"); }
 		}
 	}
 
